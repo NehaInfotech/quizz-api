@@ -1,20 +1,18 @@
+const mongoose =require('mongoose')
+
 const questionSchema = new mongoose.Schema({
-    text: {
+    questionText: {
         type: String,
-        required: true,
+        required: true
     },
-    options: [
-        {
-            text: {
-                type: String,
-                required: true,
-            },
-            isCorrect: {
-                type: Boolean,
-                default: false,
-            },
-        },
-    ],
+    options: [{
+        type: String,
+        required: true
+    }],
+    correctAnswer: {
+        type: String,
+        required: true
+    },
     quiz: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'quizSchema',

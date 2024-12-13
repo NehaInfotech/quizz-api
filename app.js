@@ -6,7 +6,8 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 
 var userRouter = require('./routes/user');
-var usersRouter = require('./routes/users');
+var quizzRouter = require('./routes/quizz');
+var questRouter = require('./routes/questions');
 
 mongoose.connect("mongodb://localhost:27017/neha")
 .then(() => console.log("Connected to MongoDB"))
@@ -26,7 +27,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', userRouter);
-app.use('/users', usersRouter);
+app.use('/quizz', quizzRouter);
+app.use('/question', questRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
